@@ -1,14 +1,26 @@
-# Usando a imagem oficial do OpenJDK 21
-FROM eclipse-temurin:21-jdk-alpine
+# ======= 1. Build do projeto usando Maven =======
+FROM maven:3.9.1-eclipse-temurin-21 AS build
 
-# Diretório dentro do container onde a aplicação vai morar
 WORKDIR /app
 
-# Copiar o JAR gerado pelo Maven para dentro do container
-COPY target/*.jar app.jar
+# Copia o pom.xml e a pasta src
+COPY pom.xml .
+COPY src ./src
 
-# Expor a porta que a aplicação vai rodar (default Spring Boot)
+# Build do JAR (pula testes para acelerar)
+RUN mvn clean package -DskipTests
+
+# ======= 2. Imagem final para rodar o JAR =======
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+
+# Copia o JAR do estágio de build
+COPY --from=build /app/target/*.jar app.jar
+
+# Porta padrão do Spring Boot
 EXPOSE 8080
 
-# Comando para rodar a aplicação
+# Comando para iniciar a aplicação
 ENTRYPOINT ["java","-jar","app.jar"]
+
