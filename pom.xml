@@ -42,6 +42,7 @@
     		<groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>
     		<version>42.7.3</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -56,19 +57,15 @@
 	</dependencies>
 
 	<build>
-
 		<plugins>
-
 			<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.2</version>
-        <configuration>
-            <skipTests>true</skipTests>
-        </configuration>
-    </plugin>
-
-
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-surefire-plugin</artifactId>
+        		<version>3.5.2</version>
+        		<configuration>
+            		<skipTests>true</skipTests>
+        		</configuration>
+    		</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
