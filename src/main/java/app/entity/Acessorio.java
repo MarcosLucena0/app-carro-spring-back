@@ -3,6 +3,8 @@
 
 package app.entity;
 
+import java.time.LocalDate;
+
 import org.antlr.v4.runtime.misc.NotNull;
 
 import jakarta.persistence.Entity;
@@ -27,6 +29,9 @@ public class Acessorio {
 	
 	@NotNull
 	private String nome;
+
+    private LocalDate dataCriacao = LocalDate.now(); // gera data automaticamente
+
 
 	public long getId() {
 		return id;

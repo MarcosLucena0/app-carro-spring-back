@@ -1,5 +1,7 @@
 package app.entity;
 
+import java.time.LocalDate;
+
 import org.antlr.v4.runtime.misc.NotNull;
 
 import jakarta.annotation.Nonnull;
@@ -25,6 +27,9 @@ public class Marca {
 	
 	@NotNull
 	private String nome;
+
+    private LocalDate dataCriacao = LocalDate.now(); // gera data automaticamente
+
 	
 	
 	public Long getId() {
