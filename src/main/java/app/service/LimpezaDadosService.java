@@ -1,13 +1,16 @@
 package app.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
 import app.repository.AcessorioRepository;
 import app.repository.CarroRepository;
 import app.repository.MarcaRepository;
 
+@Service
 public class LimpezaDadosService {
 
     private CarroRepository carroRepository;
@@ -21,9 +24,9 @@ public class LimpezaDadosService {
     }
 
     // roda todo dia às 3h da manhã
-    @Scheduled(cron = "0 0 3 * * *")
+    @Scheduled(fixedRate = 30 * 60 * 1000)
     public void limparDadosAntigos() {
-        LocalDate limite = LocalDate.now().minusDays(1); // expira dados após 1 dia
+        LocalDateTime limite = LocalDateTime.now().minusMinutes(30); // expira dados após 30min
 
         carroRepository.deleteByDataCriacaoBefore(limite);
         marcaRepository.deleteByDataCriacaoBefore(limite);
