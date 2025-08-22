@@ -4,6 +4,7 @@
 package app.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -30,7 +31,7 @@ public class Acessorio {
 	@NotNull
 	private String nome;
 
-    private LocalDate dataCriacao = LocalDate.now(); // gera data automaticamente
+    private LocalDateTime dataCriacao = LocalDateTime.now(); // gera data automaticamente
 
 
 	public long getId() {

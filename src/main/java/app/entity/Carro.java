@@ -1,6 +1,7 @@
 package app.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.antlr.v4.runtime.misc.NotNull;
@@ -35,7 +36,7 @@ public class Carro {
 	@JoinTable(name="carro_acessorio")
 	private List<Acessorio> acessorios;
 	
-    private LocalDate dataCriacao = LocalDate.now(); // gera data automaticamente
+    private LocalDateTime dataCriacao = LocalDateTime.now(); // gera data automaticamente
 
 
 	public List<Acessorio> getAcessorios() {
