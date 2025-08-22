@@ -23,8 +23,7 @@ public class LimpezaDadosService {
         this.acessorioRepository = acessorioRepository;
     }
 
-    // roda todo dia às 3h da manhã
-    @Scheduled(fixedRate = 30 * 60 * 1000)
+    @Scheduled(fixedRate = 5 * 60 * 1000)
     @Transactional
     public void limparDadosAntigos() {
         LocalDateTime limite = LocalDateTime.now().minusMinutes(5); // expira dados após 30min
